@@ -1,6 +1,6 @@
 import pandas as pd
 
-def process_data(city_data):
+def processData(city_data):
     # Convert 'Start Time' to datetime format
     city_data['Start Time'] = pd.to_datetime(city_data['Start Time'])
     
@@ -25,13 +25,13 @@ def popular_stations_and_trip(city_data):
     
     return most_common_start_station, most_common_end_station, most_common_trip
 
-def trip_duration(city_data):
+def tripDuration(city_data):
     total_travel_time = city_data['Trip Duration'].sum()
     average_travel_time = city_data['Trip Duration'].mean()
     
     return total_travel_time, average_travel_time
 
-def user_info(city_data):
+def userInfo(city_data):
     user_type_counts = city_data['User Type'].value_counts()
     gender_counts = city_data['Gender'].value_counts() if 'Gender' in city_data else None
     birth_year_info = (city_data['Birth Year'].min(), city_data['Birth Year'].max(), city_data['Birth Year'].mode()[0]) if 'Birth Year' in city_data else None
@@ -85,7 +85,7 @@ def display_data(city_data):
 while True:
     city = select_city()
     print(f"City: {city.title()}\n")
-    data = process_data(dataframes[city])
+    data = processData(dataframes[city])
     
     most_common_month, most_common_day_of_week, most_common_hour_of_day = popular_times_of_travel(data)
     print("1. Popular times of travel:")
@@ -99,12 +99,12 @@ while True:
     print(f"- Most common end station: {most_common_end_station}")
     print(f"- Most common trip from start to end: {most_common_trip}\n")
 
-    total_travel_time, average_travel_time = trip_duration(data)
+    total_travel_time, average_travel_time = tripDuration(data)
     print("3. Trip duration:")
     print(f"- Total travel time: {total_travel_time} seconds")
     print(f"- Average travel time: {average_travel_time} seconds\n")
 
-    user_type_counts, gender_counts, birth_year_info = user_info(data)
+    user_type_counts, gender_counts, birth_year_info = userInfo(data)
     print("4. User info:")
     print("- Counts of each user type:")
     print(user_type_counts.to_string())
