@@ -1,7 +1,7 @@
 # BikeShare Project
 
 ## Date Created
-March 20, 2024
+March 18, 2024
 
 ## Description
 This project is a part of a Git and GitHub tutorial, where we learn about version control, branching, merging, and collaborating on a GitHub repository. The project focuses on managing a bikeshare system, including data analysis and documentation improvements.
